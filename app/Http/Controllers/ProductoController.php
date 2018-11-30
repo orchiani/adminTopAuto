@@ -122,7 +122,7 @@ class ProductoController extends Controller
 
         $result = DB::table('productos')
              ->where('codigo', $codigo)
-             ->update($request->only(['descripcion', 'descripcion_adicional', 'id_marca', 'id_categoria', 'suspendido', 'precio', 'precio2', 'precio3', 'oferta_volumen', 'envase_nuevo', 'escala_descuento', 'oferta_lanzamiento', 'agotar_stock', 'embarque']));
+             ->update($request->only(['descripcion', 'descripcion_adicional', 'id_marca', 'id_categoria', 'activo', 'precio', 'precio2', 'precio3', 'oferta_volumen', 'envase_nuevo', 'escala_descuento', 'oferta_lanzamiento', 'agotar_stock', 'embarque']));
         $result = DB::table('productos')
              ->where('codigo', $codigo)
              ->update(['imagen' => $filename]);
@@ -140,7 +140,7 @@ class ProductoController extends Controller
 
     $result = DB::table('productos')
     ->where('codigo', $codigo)
-    ->update($request->only(['descripcion', 'descripcion_adicional', 'id_marca', 'id_categoria', 'suspendido', 'precio', 'precio2', 'precio3', 'oferta_volumen', 'envase_nuevo', 'escala_descuento', 'oferta_lanzamiento', 'agotar_stock', 'embarque']));
+    ->update($request->only(['descripcion', 'descripcion_adicional', 'id_marca', 'id_categoria', 'activo', 'precio', 'precio2', 'precio3', 'oferta_volumen', 'envase_nuevo', 'escala_descuento', 'oferta_lanzamiento', 'agotar_stock', 'embarque']));
 
     $fragancias = $request->fragancias;
     $talles = $request->talles;

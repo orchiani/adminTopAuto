@@ -52958,7 +52958,7 @@ var render = function() {
                       _c("div", {
                         staticClass: "div-prueba4",
                         domProps: {
-                          textContent: _vm._s("$ " + producto.precio)
+                          textContent: _vm._s(" $ " + producto.precio)
                         }
                       })
                     ]

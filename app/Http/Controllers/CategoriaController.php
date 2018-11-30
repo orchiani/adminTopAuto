@@ -14,10 +14,10 @@ class CategoriaController extends Controller
         if(!$request->ajax()) return redirect('/');
        $buscar = $request->buscar;
        if($buscar==''){
-        $categorias = Categoria::orderBy('codigo', 'asc')->paginate(20);
+        $categorias = Categoria::orderBy('codigo', 'asc')->paginate(100);
        }
        else{
-           $categorias = Categoria::where(DB::raw("CONCAT(`codigo`, `nombre`)"), 'like', "%" . $buscar . "%")->orderBy('codigo', 'asc')->paginate(20);
+           $categorias = Categoria::where(DB::raw("CONCAT(`codigo`, `nombre`)"), 'like', "%" . $buscar . "%")->orderBy('codigo', 'asc')->paginate(100);
        }
 
         return [

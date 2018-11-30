@@ -23,7 +23,7 @@
             <td style="max-width=20%; min-width=15%;" class="table-data-prueba"><div class="div-prueba1" v-text="producto.codigo"> </div> </td>
             <td style="max-width=20%; min-width=20%;" class="table-data-prueba"><div class="div-prueba2" v-text="producto.descripcion"> </div> </td>
             <td style="max-width=20%; min-width=20%;" class="table-data-prueba"><div class="div-prueba3" v-text="producto.descripcion_adicional"> </div> </td>
-            <td style="max-width=20%; min-width=15%;" class="table-data-prueba"><div class="div-prueba4" v-text="'$ ' +producto.precio"> </div> </td>
+            <td style="max-width=20%; min-width=15%;" class="table-data-prueba"><div class="div-prueba4" v-text="' $ ' +producto.precio"> </div> </td>
             <td class="table-data-icons">
             <div style="display: inline;" v-if="producto.activo==1">
               <span class="badge badge-danger">Suspendido</span>

@@ -13,10 +13,10 @@ class MarcaController extends Controller
         if(!$request->ajax()) return redirect('/');
        $buscar = $request->buscar;
        if($buscar==''){
-        $marcas = Marca::orderBy('codigo', 'asc')->paginate(20);
+        $marcas = Marca::orderBy('codigo', 'asc')->paginate(100);
        }
        else{
-           $marcas = Marca::where(DB::raw("CONCAT(`codigo`, `nombre`)"), 'like', "%" . $buscar . "%")->orderBy('codigo', 'asc')->paginate(20);
+           $marcas = Marca::where(DB::raw("CONCAT(`codigo`, `nombre`)"), 'like', "%" . $buscar . "%")->orderBy('codigo', 'asc')->paginate(100);
        }
 
         return [

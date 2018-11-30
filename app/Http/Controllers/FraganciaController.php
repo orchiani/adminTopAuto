@@ -13,10 +13,10 @@ class FraganciaController extends Controller
         if(!$request->ajax()) return redirect('/');
        $buscar = $request->buscar;
        if($buscar==''){
-        $fragancias = Fragancia::orderBy('codigo', 'asc')->paginate(50);
+        $fragancias = Fragancia::orderBy('codigo', 'asc')->paginate(100);
        }
        else{
-           $fragancias = Fragancia::where(DB::raw("CONCAT(`codigo`, `nombre`)"), 'like', "%" . $buscar . "%")->orderBy('codigo', 'asc')->paginate(50);
+           $fragancias = Fragancia::where(DB::raw("CONCAT(`codigo`, `nombre`)"), 'like', "%" . $buscar . "%")->orderBy('codigo', 'asc')->paginate(100);
        }
 
         return [

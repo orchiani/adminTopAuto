@@ -12,10 +12,10 @@ class PedidosController extends Controller
     public function index(Request $request){
         $buscar = $request->buscar;
            if($buscar==''){
-            $pedidos = DB::table('pedidoscab')->orderBy('id_transaccion', 'asc')->paginate(20);
+            $pedidos = DB::table('pedidoscab')->orderBy('controlado', 'asc')->paginate(50);
            }
            else{
-               $pedidos = DB::table('pedidoscab')->where(DB::raw("CONCAT(`numero`)"), 'like', "%" . $buscar . "%")->orderBy('id_transaccion', 'asc')->paginate(20);
+               $pedidos = DB::table('pedidoscab')->where(DB::raw("CONCAT(`numero`)"), 'like', "%" . $buscar . "%")->orderBy('id_transaccion', 'asc')->paginate(50);
            }
 
 
