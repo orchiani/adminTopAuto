@@ -12,7 +12,9 @@ class PedidosController extends Controller
     public function index(Request $request){
         $buscar = $request->buscar;
            if($buscar==''){
-            $pedidos = DB::table('pedidoscab')->orderBy('controlado', 'asc')->paginate(50);
+            $pedidos = DB::table('pedidoscab')->join('users','pedidoscab.id_vendedor','=','users.id')-> join('clientes','pedidoscab.id_cliente','=','clientes.codigo')
+            ->select('pedidoscab.id_transaccion','pedidoscab.numero','clientes.razon_social as id_cliente','users.nombre as id_vendedor','pedidoscab.total','pedidoscab.id_mpago','pedidoscab.controlado','pedidoscab.descuento','pedidoscab.notas','pedidoscab.created_at','pedidoscab.updated_at','pedidoscab.id_condpago')
+            ->orderBy('controlado','asc')->paginate(50);
            }
            else{
                $pedidos = DB::table('pedidoscab')->where(DB::raw("CONCAT(`numero`)"), 'like', "%" . $buscar . "%")->orderBy('id_transaccion', 'asc')->paginate(50);
@@ -47,7 +49,7 @@ class PedidosController extends Controller
             $pedido = DB::table('pedidoscab')->join('clientes', 'pedidoscab.id_cliente', 'clientes.codigo')
             ->join('users', 'pedidoscab.id_vendedor', 'users.id')
             ->join('medios_de_pago', 'pedidoscab.id_mpago', 'medios_de_pago.codigo')
-            ->select('pedidoscab.created_at', 'pedidoscab.numero', 'pedidoscab.total', 'pedidoscab.controlado', 'pedidoscab.descuento', 'clientes.razon_social', 'users.usuario', 'medios_de_pago.nombre')
+            ->select('pedidoscab.created_at', 'pedidoscab.numero', 'pedidoscab.total', 'pedidoscab.controlado', 'pedidoscab.descuento', 'clientes.razon_social', 'users.usuario', 'medios_de_pago.nombre','pedidoscab.notas')
             ->where('pedidoscab.id_transaccion', '=', $transaccion)
             ->orderBy('pedidoscab.id_transaccion', 'desc')->get();
 
@@ -68,7 +70,7 @@ class PedidosController extends Controller
             $cabecera = DB::table('pedidoscab')->join('clientes', 'pedidoscab.id_cliente', 'clientes.codigo')
             ->join('users', 'pedidoscab.id_vendedor', 'users.id')
             ->join('medios_de_pago', 'pedidoscab.id_mpago', 'medios_de_pago.codigo')
-            ->select('pedidoscab.created_at', 'pedidoscab.numero', 'pedidoscab.total', 'pedidoscab.controlado', 'pedidoscab.descuento', 'clientes.razon_social', 'clientes.cuit', 'clientes.telefono', 'clientes.direccion', 'clientes.id_iva', 'clientes.email', 'clientes.cuenta', 'users.usuario', 'medios_de_pago.nombre')
+            ->select('pedidoscab.created_at', 'pedidoscab.numero', 'pedidoscab.total', 'pedidoscab.controlado', 'pedidoscab.descuento', 'clientes.razon_social', 'clientes.cuit', 'clientes.telefono', 'clientes.direccion', 'clientes.id_iva', 'clientes.email', 'clientes.cuenta', 'users.usuario', 'medios_de_pago.nombre','pedidoscab.notas')
             ->where('pedidoscab.id_transaccion', '=', $transaccion)->get();
 
             $detalles =  DB::table('pedidosdet')->join('productos', 'pedidosdet.articulo', 'productos.codigo')

@@ -143,7 +143,8 @@
                            Cuenta: {{$v->cuenta}}<br>
                            Dirección: {{$v->direccion}}<br>
                            Teléfono: {{$v->telefono}}<br>
-                           Email: {{$v->email}}</p></th>
+                           Email: {{$v->email}}<br>
+                           Notas: {{$v->notas}}</p></th>
                         </tr>
                     </tbody>
                 </table>
@@ -164,6 +165,25 @@
                         <tr>
                             <td>{{$v->usuario}}</td>
                             <td>{{$v->created_at}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <br>
+        <section>
+            <div>
+                <table id="facpago">
+                    <thead>
+                        <tr id="fv">
+                            <th>Cond de facturacion</th>
+                            <th>Cond de pago</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{$v->nombre}}</td>
+                            <td>{{$v->nombre}}</td>
                         </tr>
                     </tbody>
                 </table>

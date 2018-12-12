@@ -144,7 +144,7 @@
         </thead>
         <tbody>
         <td style="border-bottom: 0;">
-        <input maxlength="120" :disabled="modificar == 0" type="textarea" style="border: 0; border-bottom: 1px solid rgb(251, 192, 45); text-align:center;  width: 100%; padding: 7px 0;" v-model="descripcion_adicional" onblur="this.placeholder = 'Descripcion adicional..'" onfocus="this.placeholder = ''" placeholder="Descripcion adicional..">
+        <input maxlength="500" :disabled="modificar == 0" type="textarea" style="border: 0; border-bottom: 1px solid rgb(251, 192, 45); text-align:center;  width: 100%; padding: 7px 0;" v-model="descripcion_adicional" onblur="this.placeholder = 'Descripcion adicional..'" onfocus="this.placeholder = ''" placeholder="Descripcion adicional..">
         </td>
         </tbody>
         </table>
